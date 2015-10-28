@@ -22,3 +22,13 @@
     
     总结：其实这也跟缓存的思想差不多，减少多余的执行代码
 函数绑定
+  function bind(fn, context){
+    return function(){
+      return fn.apply(context, arguments);
+    }
+  }
+  在bind中创建一个闭包，闭包使用apply调用传入的函数，并给apply()传递context对象和参数。
+  可以保持函数的指定环境。
+  ECMA5提供了bind()函数，a.bind(handler)
+    
+  }
