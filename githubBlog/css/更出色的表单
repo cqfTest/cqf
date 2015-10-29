@@ -1,0 +1,55 @@
+1.label与input配合使用
+  <label for="username">name</label>
+  <input id="username">
+  label上的for可以增大input的焦点范围
+2.label与input的位置
+  这两者的大小应该足够大，能够方便被用户所接触到。
+  两个小原则：
+    1.当屏幕分辨率小时，标签应该在输入元素上方
+    2.当屏幕分辨率大时，标签应该是载入元素的左边
+  应该确保在input输入时，令和input配合使用的label同时可见，提升用户体验
+3.使用占位符(placeholders)
+  placeholders属性会提醒用户在input框中输入的正确格式
+  <input placeholder="HH:MM:SS">
+4.自动补全
+  <form autocomplete="on|off">
+  在表单form中使用autocomplete便可以开启和关闭form表单中的自动补全功能
+  而对于不需要补全的input，则可以直接autocomplete="off"关闭即可
+  PS：自动补全功能只在表单请求为post的时候才生效
+5.autofocus属性
+  设置该属性，桌面浏览器会自动聚焦到这个input，如搜索引擎的主页
+  但是移动设备会忽略该属性，防止键盘意外地出现
+6.type属性
+  选择最合适的type，可以提醒当前输入应该出现什么样的键盘布局类型，无须切换键盘
+  url：输入必须是有效的uri格式，如http://, ftp://
+  tel：没有特定的语法检查，但可以使用pattern属性来限定用户输入特定的格式
+  email：提醒浏览器在键盘上应该默认显示@按键
+  search：一个和系统搜索域样式一致的文本输入域
+  number：数字类型输入，整数或小数
+  range：数字输入,以滑块的形式呈现
+  datetime-local：日期和时间的输入，提供的时区是当时时区
+  date：日期的输入，不提供时区
+  time：时间的输入，不提供时区
+  week：星期的输入，不提供时区
+  month：月份的输入，不提供时区
+  color：颜色的选择
+7.datalist元素
+  <input list="tip">
+  <datalist id="tip">
+    <option value="white">
+    <option value="milk">
+  </datalist>
+  datalist为一个特定的input域提供一系列提示输入值
+8.表单验证
+  pattern属性：
+    pattern属性制定一个正则表达式来验证输入的数据
+    <input type="text" pattern="^\d{5,6}(?:[-\s]\d{4})?$">
+  required属性：
+    指定某个域不能为空
+  min，max，step属性：
+    可以为type类型像number，range甚至是data/time的输入，可以指定最大最小值，每一步的增减幅度
+  maxlength属性：
+    限定用户在输入框或者文本框中科输入的值的最大长度
+  novalidate属性：
+    不对form或者input域进行验证，但是并不会影响到伪类和javascript API进行表单合法性验证
+9.验证约束
