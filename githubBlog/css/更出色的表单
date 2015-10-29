@@ -105,7 +105,24 @@
     :invalid，与valid伪类相反
       PS：因为是立即验证，也就可能会在用户一进去表单页面的时候，用户还没填写表单，表单域就被标识为不合法，这将影响用户体验。
       所以应该结合css和javascript，在用户访问过该域以后才显示不合法的样式
+      var inputs = document.getElementsByTagName("input");
+      var inputs_len = inputs.length;
+      var addDirtyClass = function(evt) {
+        sampleCompleted("Forms-order-dirty");
+        evt.srcElement.classList.toggle("dirty", true);
+      };
+      for (var i = 0; i < inputs_len; i++) {
+        var input = inputs[i];
+        input.addEventListener("blur", addDirtyClass);
+        input.addEventListener("invalid", addDirtyClass);
+      }
     :required，当一个输入元素有required属性的时候，就明确地为该输入设置样式
     :optional，当一个输入元素没有required属性的时候，就明确地位该输入设置样式
     :in-range，当一个输入元素的值是数字并数字在限定范围内的时候，就明确地位该输入设置样式
     :out-of-range，当一个输入元素的值是数组并数字超过了限定范围的时候，就明确地位该输入设置样式
+11.requestAutocomplete
+  简化支付流程，提高用户体验
+  隐藏支付表单并直接引导到确认页面
+  确保输入域包含恰当的autocomplete属性
+  
+    
