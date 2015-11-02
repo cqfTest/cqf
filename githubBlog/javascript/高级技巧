@@ -42,6 +42,7 @@ map,reduce,foreach
     [].reduce(function(previousVal,currentVal,index,array){})
   forEach:遍历
     [].map(function(currentVal,index,array){})
+  map返回的是新数组，而forEach操作的数组是调用对象。
     
     
   
