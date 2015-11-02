@@ -38,10 +38,29 @@
 map,reduce,foreach
   map:映射
     [].map(function(currentVal,index,array){})
+    Array.prototype.map = function(fn){
+      var resultArray = [];
+      for (var i = 0, len = this.length; i < len; i++){
+        resultArray[i] = fn.apply(this,this[i],i,this);
+      }
+      return resultArray;
+    }
   reduce:累计
     [].reduce(function(previousVal,currentVal,index,array){})
+    Array.prototype.reduce= function (fn) {
+        var formerResult = this[0];
+        for (var i = 1,len = this.length; i < len ; i++) {
+             formerResult = fn.apply(this,[formerResult,this[i],i,this]);
+        }
+        return formerResult;
+    }
   forEach:遍历
     [].map(function(currentVal,index,array){})
+    Array.prototype.forEach = function (fn) {
+        for (var i = 0,len = this.length; i < len ; i++) {
+             fn.apply(this,[this[i],i,this]);
+        }
+    }
   map返回的是新数组，而forEach操作的数组是调用对象。
     
     
